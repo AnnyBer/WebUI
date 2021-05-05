@@ -22,7 +22,7 @@ public class ProjectCreation {
         driver.get("https://crm.geekbrains.space/project/my");
         driver.findElement(By.xpath("//a[text() = 'Создать проект'] ")).click();
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//input[@name='crm_project[name]']")).sendKeys("testfortest12345");
+        driver.findElement(By.xpath("//input[@name='crm_project[name]']")).sendKeys("testfortest12345678");
         Thread.sleep(10000);
         driver.findElement(By.xpath("//span[text()='Укажите организацию']/..")).click();
         Thread.sleep(5000);
@@ -44,10 +44,9 @@ public class ProjectCreation {
         Select selectManager = new Select(driver.findElement(By.name("crm_project[manager]")));
         selectManager.selectByVisibleText("Козлов Илья");
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//button[contains(text(),'Сохранить и закрыть')]"));
-        Thread.sleep(10000);
+        driver.findElement(By.xpath("//button[contains(text(),'Сохранить и закрыть')]")).click();
+        Thread.sleep(6000);
         driver.findElement(By.xpath("//*[text()='Проект сохранен']"));
-
         driver.quit();
     }
 
