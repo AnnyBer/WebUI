@@ -7,16 +7,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class NewLatterPage extends BaseSettingMail{
+public class NewLetterPage extends BaseSettingMail{
 
-    public NewLatterPage(WebDriver driver) {
+    public NewLetterPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(css = ".container--ItIg4 > .inputContainer--nsqFu > .container--H9L5q")
             public WebElement inputEmail;
 
-    public NewLatterPage fillInputEmail(String email){
+    public NewLetterPage fillInputEmail(String email){
+        webDriverWait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.cssSelector(
+                        ".container--ItIg4 > .inputContainer--nsqFu > .container--H9L5q")));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(inputEmail));
         inputEmail.sendKeys(email);
         return this;
     }
@@ -24,7 +28,7 @@ public class NewLatterPage extends BaseSettingMail{
     @FindBy(xpath = "//input[@name= 'Subject']")
             public WebElement inputNameSubject;
 
-    public NewLatterPage fillInputNameSubject(String nameSubject){
+    public NewLetterPage fillInputNameSubject(String nameSubject){
         inputNameSubject.sendKeys(nameSubject);
         return this;
     }

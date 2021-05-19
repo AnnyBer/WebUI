@@ -1,9 +1,6 @@
 package Lesson6;
 
-import Lesson6.crm.pages.CreateContactPersonPage;
-import Lesson6.mail.pagesMail.InboxMailPage;
-import Lesson6.mail.pagesMail.LoginPageMail;
-import Lesson6.mail.pagesMail.NewLatterPage;
+import Lesson6.mail.pagesMail.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -25,9 +22,10 @@ public class TestFromMail extends BaseTest{
     void createNewLatter(){
         new LoginPageMail(driver).loginMail("geektestbrains", "geekbrains13");
         driver.get(AUTHORIZED_URL);
+        driver.manage().window().maximize();
 
         new InboxMailPage(driver).submitNewLetter();
-        new NewLatterPage(driver)
+        new NewLetterPage(driver)
                 .fillInputEmail("ber.anny@yandex.ru")
                 .fillInputNameSubject("Test")
                 .submitButtonSend();
@@ -39,15 +37,22 @@ public class TestFromMail extends BaseTest{
 
     }
 
+    @Test
+    void deleteNewLetter(){
+
+        new LoginPageMail(driver).loginMail("geektestbrains", "geekbrains13");
+        driver.get(AUTHORIZED_URL);
+        driver.manage().window().maximize();
+
+        new InboxMailPage(driver).selectButtonSent();
+        new SentPage(driver).selectNameLetter();
+        new OpenLetterPage(driver).selectButtonDeleteLetter();
+
+        webDriverWait.until(
+                ExpectedConditions.presenceOfElementLocated(
+                        By.xpath(new OpenLetterPage(driver).requestSuccessDeleteLocator)));
+        assertThat (new OpenLetterPage(driver).requestSuccessDelete, isDisplayed());
 
 
-   /* public InboxMailPage newLatterSend(String email, String nameSubject){
-        inputEmail.sendKeys(email);
-        inputNameSubject.sendKeys(nameSubject);
-        buttonSend.click();
-        buttonFalse.sendKeys(Keys.ENTER);
-        return new InboxMailPage(driver);
     }
-
-    */
 }
