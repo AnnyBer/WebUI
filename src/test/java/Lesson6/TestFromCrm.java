@@ -28,7 +28,7 @@ public class TestFromCrm extends BaseTest {
                 .fillInputFirstName("Греча")
                 .selectOrganization("1234")
                 .fillInputJobTitle("Director")
-                .buttonSaveAndClose.click();
+                .selectButtonSaveAndClose();
 
         webDriverWait.until(
                 ExpectedConditions.presenceOfElementLocated(
@@ -44,14 +44,14 @@ public class TestFromCrm extends BaseTest {
 
         new AllMyProjectPage(driver).createProject();
         new CreateProjectPage(driver)
-                .inputProjectName("test4test1234")
-                .changeOrganization("1234")
+                .inputProjectName("test4test123456")
+                .changeOrganization("Континент+")
                 .selectBusinessUnit("Research & Development")
                 .selectProjectCurator("Applanatest Applanatest Applanatest")
                 .selectRp("Авласёнок Денис")
                 .selectAdministrator("Амелина Светлана")
                 .selectManager("Козлов Илья")
-                .selectContactMain()
+                .selectContactMain("Форточкина Евдокия")
                 .buttonSaveAndClose.click();
 
 

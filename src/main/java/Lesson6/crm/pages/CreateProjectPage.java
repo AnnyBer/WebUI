@@ -30,7 +30,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(xpath = "//input[@class='select2-input select2-focused select2-active']")
         public WebElement inputNameOrganizationProject;
 
-    @FindBy(xpath = "//li[@class= 'select2-results-dept-0 select2-result select2-result-selectable']")
+    @FindBy(xpath = "//span[@class='select2-match']")
         public WebElement correctNameOrganization;
 
 
@@ -38,7 +38,7 @@ public class CreateProjectPage extends BaseSettings{
         changeOrganizationProject.click();
         inputNameOrganizationProject.sendKeys(nameOrganizationProject);
         webDriverWait.until
-                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class= 'select2-results-dept-0 select2-result select2-result-selectable']")));
+                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='select2-match']")));
         correctNameOrganization.click();
                 return this;
     }
@@ -89,11 +89,11 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(xpath = "//div[@id='select2-drop']//input")
     public WebElement inputContactMain;
 
-    public CreateProjectPage selectContactMain() {
+    public CreateProjectPage selectContactMain(String nameContactName) {
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class= 'select2-container select2']/a")));
         contactMain.click();
-        inputContactMain.sendKeys("Ivanov Ivan");
+        inputContactMain.sendKeys(nameContactName);
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@name=\"crm_project[contactMain]\"]/option[5]")));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(inputContactMain));

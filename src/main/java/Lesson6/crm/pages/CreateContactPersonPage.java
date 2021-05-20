@@ -38,7 +38,7 @@ public class CreateContactPersonPage extends BaseSettings{
 
     public CreateContactPersonPage selectOrganization(String nameOrganization){
         openListOrganizations.click();
-        inputNameOrganization.sendKeys("1234");
+        inputNameOrganization.sendKeys(nameOrganization);
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='" + nameOrganization + "']")));
         inputNameOrganization.sendKeys(Keys.ENTER);
@@ -51,12 +51,20 @@ public class CreateContactPersonPage extends BaseSettings{
     public CreateContactPersonPage fillInputJobTitle(String jobTitle){
         inputJobTitle.sendKeys("Director");
         inputJobTitle.sendKeys(Keys.ENTER);
+        webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='loader-overlay']")));
         return this;
     }
 
     @FindBy(xpath = "//button[contains(text(),'Сохранить и закрыть')]")
             public WebElement buttonSaveAndClose;
 
+    public ContactPersonsPage selectButtonSaveAndClose(){
+        webDriverWait.until
+                (ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Сохранить и закрыть')]")));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(buttonSaveAndClose));
+        buttonSaveAndClose.click();
+        return new ContactPersonsPage(driver);
+    }
     @FindBy(xpath = requestSuccessContactLocator)
     public WebElement requestSuccessContact;
 
