@@ -1,5 +1,6 @@
 package Lesson6.crm.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class CreateProjectPage extends BaseSettings{
 
     public By projectNameLocator = By.xpath("//input[@name='crm_project[name]']");
 
+    @Step("Ввод названия проекта")
     public CreateProjectPage inputProjectName(String pName){
         projectName.sendKeys(pName);
        return this;
@@ -33,7 +35,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(xpath = "//span[@class='select2-match']")
         public WebElement correctNameOrganization;
 
-
+    @Step("Выбор Организации")
     public CreateProjectPage changeOrganization(String nameOrganizationProject){
         changeOrganizationProject.click();
         inputNameOrganizationProject.sendKeys(nameOrganizationProject);
@@ -46,6 +48,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(name= "crm_project[businessUnit]")
             public WebElement businessUnit;
 
+    @Step("Выбор Подразделения")
     public CreateProjectPage selectBusinessUnit(String bUnit){
         new Select(businessUnit).selectByVisibleText(bUnit);
         return this;
@@ -54,6 +57,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(name = "crm_project[curator]")
             public WebElement projectCurator;
 
+    @Step("Выбор Куратора проекта")
     public CreateProjectPage selectProjectCurator(String pCurator){
         new Select(projectCurator).selectByVisibleText(pCurator);
         return this;
@@ -62,6 +66,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(name = "crm_project[rp]")
     public WebElement rpSelect;
 
+    @Step("Выбор Руководителя проекта")
     public CreateProjectPage selectRp(String rp) {
         new Select(rpSelect).selectByVisibleText(rp);
         return this;
@@ -70,6 +75,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(name = "crm_project[administrator]")
     public WebElement selectAdministrator;
 
+    @Step("Выбор Администратора")
     public CreateProjectPage selectAdministrator(String administrator) {
         new Select(selectAdministrator).selectByVisibleText(administrator);
         return this;
@@ -78,6 +84,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(name = "crm_project[manager]")
     public WebElement projectManager;
 
+    @Step("Выбор Менеджера")
     public CreateProjectPage selectManager(String manager) {
         new Select(projectManager).selectByVisibleText(manager);
         return this;
@@ -89,6 +96,7 @@ public class CreateProjectPage extends BaseSettings{
     @FindBy(xpath = "//div[@id='select2-drop']//input")
     public WebElement inputContactMain;
 
+    @Step("Выбор Контактного лица")
     public CreateProjectPage selectContactMain(String nameContactName) {
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class= 'select2-container select2']/a")));

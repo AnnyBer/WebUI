@@ -1,5 +1,6 @@
 package Lesson6.mail.pagesMail;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,7 @@ public class InboxMailPage extends BaseSettingMail{
     @FindBy(xpath = "//a[@href = '/sent/']")
             public WebElement buttonSent;
 
+    @Step("Нажать на пункт Отправленные")
     public SentPage selectButtonSent(){
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href = '/sent/']")));

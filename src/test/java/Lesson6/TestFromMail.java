@@ -1,6 +1,7 @@
 package Lesson6;
 
 import Lesson6.mail.pagesMail.*;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import static Lesson6.mail.ConfigurationsMail.BASE_URL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.yandex.qatools.htmlelements.matchers.WebElementMatchers.isDisplayed;
 
+@Feature("Тестирование отправки и удаления письма Mail.ru")
 public class TestFromMail extends BaseTest{
 
     @BeforeEach

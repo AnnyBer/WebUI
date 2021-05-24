@@ -1,6 +1,7 @@
 package Lesson6;
 
 import Lesson6.crm.pages.*;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -10,6 +11,7 @@ import static Lesson6.crm.Configurations.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.yandex.qatools.htmlelements.matchers.WebElementMatchers.isDisplayed;
 
+@Feature("Тестирование создания контактного лица и проекта в CRM")
 public class TestFromCrm extends BaseTest {
 
     @BeforeEach
@@ -44,7 +46,7 @@ public class TestFromCrm extends BaseTest {
 
         new AllMyProjectPage(driver).createProject();
         new CreateProjectPage(driver)
-                .inputProjectName("test4test123456")
+                .inputProjectName("abrakadabr")
                 .changeOrganization("Континент+")
                 .selectBusinessUnit("Research & Development")
                 .selectProjectCurator("Applanatest Applanatest Applanatest")

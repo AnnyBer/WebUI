@@ -1,5 +1,6 @@
 package Lesson6.mail.pagesMail;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class NewLetterPage extends BaseSettingMail{
     @FindBy(css = ".container--ItIg4 > .inputContainer--nsqFu > .container--H9L5q")
             public WebElement inputEmail;
 
+    @Step("Ввод Емейла Кому")
     public NewLetterPage fillInputEmail(String email){
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.cssSelector(
@@ -28,6 +30,7 @@ public class NewLetterPage extends BaseSettingMail{
     @FindBy(xpath = "//input[@name= 'Subject']")
             public WebElement inputNameSubject;
 
+    @Step("Ввод Темы письма")
     public NewLetterPage fillInputNameSubject(String nameSubject){
         inputNameSubject.sendKeys(nameSubject);
         return this;
@@ -39,13 +42,10 @@ public class NewLetterPage extends BaseSettingMail{
     @FindBy(xpath = "//button[@data-test-id = 'false']")
     public WebElement buttonFalse;
 
+    @Step("Нажатие кнопки Отправить")
     public InboxMailPage submitButtonSend(){
         buttonSend.click();
         buttonFalse.sendKeys(Keys.ENTER);
         return new InboxMailPage(driver);
     }
-
-
-
-
 }
