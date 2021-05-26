@@ -1,5 +1,6 @@
 package Lesson6.mail.pagesMail;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class OpenLetterPage extends BaseSettingMail{
     @FindBy(xpath = "//span[@data-title-shortcut= 'Del']")
             public WebElement buttonDeleteLetter;
 
+    @Step("Нажатие кнопки Удалить")
     public OpenLetterPage selectButtonDeleteLetter(){
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-title-shortcut= 'Del']")));

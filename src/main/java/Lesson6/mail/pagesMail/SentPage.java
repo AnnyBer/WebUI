@@ -1,5 +1,6 @@
 package Lesson6.mail.pagesMail;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ public class SentPage extends BaseSettingMail{
     @FindBy(xpath = "//span[text()= 'Test']")
             public WebElement nameLetter;
 
+    @Step("Открытие письма")
     public OpenLetterPage selectNameLetter(){
         webDriverWait.until
                 (ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()= 'Test']")));

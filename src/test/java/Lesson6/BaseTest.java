@@ -8,10 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
-    WebDriver driver;
+    EventFiringWebDriver driver;
     WebDriverWait webDriverWait;
     LoginPage loginPage;
     LoginPageMail loginPageMail;
@@ -23,13 +25,17 @@ public class BaseTest {
 
     @BeforeEach
     public void setupBrowser() {
-        driver = new ChromeDriver();
+        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver.register(new CustomLogger());
         webDriverWait = new WebDriverWait(driver, 5);
         loginPage = new LoginPage(driver);
+        loginPageMail = new LoginPageMail(driver);
     }
 
     @AfterEach
     void tearDown() {
+
+        driver.manage().logs().get(LogType.BROWSER).getAll().forEach(System.out::println);
         driver.quit();
     }
 }

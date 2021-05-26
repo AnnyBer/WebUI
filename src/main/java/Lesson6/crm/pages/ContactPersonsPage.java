@@ -1,5 +1,6 @@
 package Lesson6.crm.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class ContactPersonsPage extends BaseSettings{
     @FindBy(xpath = "//a[text() = 'Создать контактное лицо']")
     public WebElement createContactPersonButton;
 
+    @Step("Клик на кнопку Создать контактное лицо")
     public void createContactPerson() {
         createContactPersonButton.click();
                webDriverWait.until(
